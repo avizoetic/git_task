@@ -1,14 +1,8 @@
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 import Search from "./search";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  getList,
-  clearState,
-} from "./../../redux/actions";
+import { getList, clearState } from "./../../redux/actions";
 
 function ListPage({
   getListAction,
@@ -25,11 +19,11 @@ function ListPage({
 
   const [text, setText] = useState("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     getListAction(text);
     setText("");
@@ -44,9 +38,14 @@ function ListPage({
       {requesting ? (
         <h1>Requesting</h1>
       ) : list.length > 0 ? (
-        list.map(el => (
+        list.map((el) => (
           <li key={el.id}>
-            <Link to="#">
+            <Link
+              to={{
+                pathname: `/${el.name}`,
+                state: { data: el },
+              }}
+            >
               <span>
                 <strong>{el.name}</strong>
                 <small>{el.owner.login}</small>
@@ -61,13 +60,9 @@ function ListPage({
           </li>
         ))
       ) : error ? (
-        <h1 style={{ textAlign: "center" }}>
-          No Data found
-        </h1>
+        <h1 style={{ textAlign: "center" }}>No Data found</h1>
       ) : (
-        <h1 style={{ textAlign: "center" }}>
-          Search something
-        </h1>
+        <h1 style={{ textAlign: "center" }}>Search something</h1>
       )}
     </ul>
   );
