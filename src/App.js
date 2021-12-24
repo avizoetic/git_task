@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ListPage from "./components/ListPage";
 import "./css/style.scss";
 import DetailPage from "./components/DetailPage";
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<ListPage />} />
-        <Route path="/:id" render={(props) => <DetailPage {...props} />} />
+        <Route path="/:name" element={<DetailPage />} />
       </Routes>
     </div>
   );

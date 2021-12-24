@@ -43,8 +43,11 @@ function ListPage({
             <Link
               to={{
                 pathname: `/${el.name}`,
-                state: { data: el },
+                state: {
+                  el,
+                },
               }}
+              params={{ username: text }}
             >
               <span>
                 <strong>{el.name}</strong>
