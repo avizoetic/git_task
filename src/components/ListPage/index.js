@@ -18,6 +18,10 @@ function ListPage({
   }, []);
 
   const [text, setText] = useState("");
+  const [sort, setSort] = useState("indexed");
+  const [page, setPage] = useState("1");
+  const [perPage, setPerPage] = useState("5");
+  const [order, setOrder] = useState("asc");
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -25,7 +29,13 @@ function ListPage({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getListAction(text);
+    getListAction({
+      q: text,
+      page: page,
+      per_page: perPage,
+      sort: sort,
+      order: order,
+    });
     setText("");
   };
   return (

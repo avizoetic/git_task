@@ -12,9 +12,11 @@ export const base = () => {
   return axios.create(data);
 };
 
-export const viewList = async (name) => {
+export const viewList = async (params) => {
   return base()
-    .get(`search/repositories?q=${name}`)
+    .get(`search/repositories`, {
+      params,
+    })
     .then((res) => {
       console.log(res.data.items);
       return res?.data.items;
