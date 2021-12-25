@@ -27,9 +27,10 @@ export const viewList = async (params) => {
     });
 };
 
-export const viewDetail = async (name, repo) => {
+export const viewDetail = async (payload) => {
+  console.log(payload);
   return base()
-    .get(`/repos/${name}/${repo}`)
+    .get(`/repos/${payload.owner}/${payload.name}`)
     .then((res) => {
       return res?.data;
     })

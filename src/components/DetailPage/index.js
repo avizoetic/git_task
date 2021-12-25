@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-
-// export default function DetailPage() {
-//   console.log("hello");
-//   let { id } = useParams();
-//   console.log("na", id);
-//   return (
-//     <div>
-//       <h1>Detail Page</h1>
-//     </div>
-//   );
-// }
-
 import { connect } from "react-redux";
 import { getDetail, clearState } from "./../../redux/actions";
 
@@ -22,27 +10,49 @@ function DetailPage({
   requesting,
   detail,
 }) {
+  const [showDetail, setShowDetail] = useState();
+
   useEffect(() => {
     return () => {
       clearStateAction();
+      showDetails();
     };
   }, []);
 
-  const {
-    state: { el },
-  } = useLocation();
+  let { owner, name } = useParams();
 
-  console.log("location", el);
-
-  // console.log("hello hello", detail)
-  console.log("hello");
-  let { name } = useParams();
-  console.log("na", name);
-  // const [text, setText] = useState("");
+  const showDetails = () => {
+    getDetailAction({ owner: owner, name: name });
+    setShowDetail("show");
+  };
 
   return (
     <>
       <h1>Detail</h1>
+      <button onClick={showDetails}>show details</button>
+      {showDetail == "show" ? (
+        <div>
+          <br></br>
+          <p>
+            {" "}
+            Username --{" "}
+            <a href={detail?.owner?.html_url} target="_blank">
+              {detail?.owner?.login}{" "}
+            </a>
+          </p>
+          <p>
+            {" "}
+            Repository --{" "}
+            <a href={detail?.html_url} target="_blank">
+              {detail?.full_name}{" "}
+            </a>
+          </p>
+          <p> No. of open issues -- {detail?.open_issues_count} </p>
+          <p> Default branch -- {detail?.default_branch}</p>
+        </div>
+      ) : (
+        <p></p>
+      )}
     </>
   );
 }

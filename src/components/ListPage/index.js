@@ -52,12 +52,12 @@ function ListPage({
           <li key={el.id}>
             <Link
               to={{
-                pathname: `/${el.name}`,
-                state: {
-                  el,
-                },
+                pathname: `${el.owner.login}/${el.name}`,
+                // state: {
+                //   el,
+                // },
               }}
-              params={{ username: text }}
+              // params={{ username: text }}
             >
               <span>
                 <strong>{el.name}</strong>

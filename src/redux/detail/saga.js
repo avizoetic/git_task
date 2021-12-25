@@ -3,13 +3,13 @@ import { all, fork, call, put, takeEvery } from "redux-saga/effects";
 import { GET_DETAIL } from "../actions";
 import { getDetailSuccess, getDetailFailure } from "./action";
 
-import { viewList } from "../../data/api";
+import { viewDetail } from "../../data/api";
 
 export function* watchGetDetail() {
   yield takeEvery(GET_DETAIL, getDetail);
 }
 
-const ViewDetailAsync = async (payload) => await viewList(payload.string);
+const ViewDetailAsync = async (payload) => await viewDetail(payload.string);
 
 function* getDetail({ payload }) {
   try {
