@@ -18,8 +18,7 @@ export const viewList = async (params) => {
       params,
     })
     .then((res) => {
-      console.log(res.data.items);
-      return res?.data.items;
+      return res?.data;
     })
     .catch((err) => {
       console.log("error from catch api", err);

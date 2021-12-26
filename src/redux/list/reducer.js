@@ -8,7 +8,10 @@ import {
 const initialState = {
   requesting: false,
   error: "",
-  list: [],
+  list: {
+    data: [],
+    total: null,
+  },
 };
 
 export default (state = initialState, action) => {
@@ -19,11 +22,13 @@ export default (state = initialState, action) => {
         requesting: true,
       };
     case GET_LIST_SUCCESS:
-      console.log("reducer", action);
       return {
         ...state,
         requesting: false,
-        list: action.payload.list,
+        list: {
+          data: action.payload.list.items,
+          total: action.payload.list.total_count,
+        },
       };
     case GET_LIST_FAILURE:
       return {
@@ -36,7 +41,10 @@ export default (state = initialState, action) => {
       return {
         requesting: false,
         error: "",
-        list: [],
+        list: {
+          data: [],
+          total: null,
+        },
       };
     default:
       return state;

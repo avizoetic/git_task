@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { getDetail, clearState } from "./../../redux/actions";
+import "../../css/style.scss";
 
 function DetailPage({
   getDetailAction,
@@ -29,7 +30,9 @@ function DetailPage({
   return (
     <>
       <h1>Detail</h1>
-      <button onClick={showDetails}>show details</button>
+      <button style={{ marginRight: "20px" }} onClick={showDetails}>
+        Show details
+      </button>
       {showDetail == "show" ? (
         <div>
           <br></br>
