@@ -18,7 +18,7 @@ function ListPage({
     };
   }, []);
   const [text, setText] = useState("");
-  const [sort, setSort] = useState("indexed");
+  const [sort, setSort] = useState("full_name");
   const [page, setPage] = useState("1");
   const [perPage, setPerPage] = useState("10");
   const [order, setOrder] = useState("asc");
@@ -78,7 +78,7 @@ function ListPage({
   const orderHandler = (e) => {
     e.preventDefault();
     if (order === "asc") {
-      setOrder("dsc");
+      setOrder("desc");
     } else {
       setOrder("asc");
     }
