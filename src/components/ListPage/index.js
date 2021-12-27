@@ -42,7 +42,7 @@ function ListPage({
         order: order,
       });
     }
-  }, [perPage, order, page]);
+  }, [perPage, order, page, sort]);
 
   useEffect(() => {
     if (Object.keys(list || {}) && list.data.length > 0) {
@@ -89,6 +89,7 @@ function ListPage({
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         order={order}
+        setSort={setSort}
         orderHandler={(e) => orderHandler(e)}
         text={text}
       />

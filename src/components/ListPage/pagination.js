@@ -11,7 +11,7 @@ export default function Pagination({
   };
   return (
     <div className="pagination">
-      <form>
+      <form style={{ marginTop: "7px" }}>
         <select onChange={handleChange} name="perPage">
           <option>10</option>
           <option>25</option>

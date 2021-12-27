@@ -8,9 +8,20 @@ export default function Search({
   handleChange,
   handleSubmit,
   text,
+  setSort,
 }) {
+  const sortChange = (e) => {
+    console.log(e.target.value);
+    setSort(e.target.value);
+  };
   return (
     <form>
+      <select onChange={sortChange} name="sort">
+        <option>created</option>
+        <option>updated</option>
+        <option>pushed</option>
+        <option>full_name</option>
+      </select>
       <button style={{ marginRight: "20px" }} onClick={(e) => orderHandler(e)}>
         {order === "asc" ? "Asc" : "Desc"}
       </button>
